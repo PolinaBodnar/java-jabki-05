@@ -1,122 +1,52 @@
-import java.util.Random;
-
 public class Main {
-
-    private static final Random RANDOM = new Random();
-
     public static void main(String[] args) {
-        int[] numbers = new int[10];
-        String[] names = {"Ilya", "Elena", "Андрей"};
+        int[] arr = {3, -2, 7, -5, 3};
 
-        //System.out.println(numbers);
+        System.out.println("1. Печать массива:");
+        ArrayUtils.printArray(arr);
 
-        /*
-        for (int i = 0; i < numbers.length; i++) {
-            System.out.println(numbers[i]);
-        }
-         */
+        System.out.println("\n2. Сумма массива: " + ArrayUtils.sumArray(arr));
 
-        /*
-        for (String name : names) {
-            System.out.println(name);
-        }
-         */
+        System.out.println("\n3. Минимум в массиве: " + ArrayUtils.findMin(arr));
 
-        // Запись значение
-        numbers[0] = 1;
+        System.out.println("\n4. Месяцы на М:");
+        System.out.println(ArrayUtils.getMonthsStartingWithM());
 
-        // System.out.println(numbers[0]);
-        // System.out.println(names[1]);
-        // System.out.println(names.length);
+        System.out.println("\n5. Реверс массива:");
+        ArrayUtils.reverseArray(arr);
+        ArrayUtils.printArray(arr);
 
-        // System.out.println(average(1000));
-        // System.out.println(averageV2(1000));
+        System.out.println("\n6. Есть ли повторы: " + ArrayUtils.hasDuplicates(arr));
 
-        int[][] matrix = new int[10][10];
-        int[][] grid = {{1, 2}, {3, 4}};
+        System.out.println("\n7. Заменяем отрицательные на положительные:");
+        ArrayUtils.absNegatives(arr);
+        ArrayUtils.printArray(arr);
 
-        // print(matrix);
-        // print(grid);
+        System.out.println("\n8. Диагональная матрица 3x3:");
+        int[][] diag = ArrayUtils.createDiagonalMatrix();
+        printMatrix(diag);
 
-        // printIndex(matrix);
-        // printIndex(grid);
+        System.out.println("\n9. Сумма 2D массива: " + ArrayUtils.sum2DArray(diag));
 
-        int[][] data = createMatrix(10);
-        print(data);
-        sum(data);
+        System.out.println("\n10. Максимум и координаты:");
+        System.out.println(ArrayUtils.findMaxWithCoordinates(diag));
+
+        System.out.println("\n11. Квадратный ли массив: " + ArrayUtils.isSquareMatrix(diag));
+
+        System.out.println("\n12. Анализ 2D массива:");
+        ArrayUtils.analyze2DArray(diag);
+
+        System.out.println("\n13. Четные = 0, нечетные = 1 (4x4):");
+        int[][] pattern = ArrayUtils.fillEvenOddPattern(4, 4);
+        printMatrix(pattern);
     }
 
-    // O(2n)
-    static int average(int size) {
-        int[] arr = new int[size];
-
-        // O(n)
-        for (int i = 0; i < size; i++) {
-            arr[i] = RANDOM.nextInt(100);
-        }
-
-        int sum = 0;
-
-        // O(n)
-        for (int e : arr) {
-            sum += e;
-        }
-
-        return sum / size;
-    }
-
-    // O(n)
-    static int averageV2(int size) {
-        int[] arr = new int[size];
-        int sum = 0;
-
-        // O(n)
-        for (int i = 0; i < size; i++) {
-            arr[i] = RANDOM.nextInt(100);
-            sum += arr[i];
-        }
-
-
-        return sum / size;
-    }
-
-    static void print(int[][] arr) {
-        for (int i = 0; i < arr.length; i++) {
-            for (int j = 0; j < arr[i].length; j++) {
-                System.out.print(arr[i][j] + " ");
+    public static void printMatrix(int[][] matrix) {
+        for (int[] row : matrix) {
+            for (int val : row) {
+                System.out.print(val + " ");
             }
             System.out.println();
-        }
-        System.out.println();
-    }
-
-    static void printIndex(int[][] arr) {
-        for (int i = 0; i < arr.length; i++) {
-            for (int j = 0; j < arr[i].length; j++) {
-                System.out.printf("(%s, %s)", i, j);
-            }
-            System.out.println();
-        }
-        System.out.println();
-    }
-
-    static int[][] createMatrix(int size) {
-        int[][] matrix = new int[size][size];
-        for (int i = 0; i < size; i++) {
-            for (int j = 0; j < size; j++) {
-                matrix[i][j] = RANDOM.nextInt(50);
-            }
-        }
-        return matrix;
-    }
-
-    static void sum(int[][] arr) {
-        for (int i = 0; i < arr.length; i++) {
-            int sum = 0;
-            for (int j = 0; j < arr[i].length; j++) {
-                sum += arr[i][j];
-            }
-            System.out.printf("Строка %s: сумма = %s\n", i, sum);
         }
     }
 }
