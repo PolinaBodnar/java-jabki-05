@@ -29,15 +29,20 @@ public class Main {
         System.out.println("\n9. Сумма 2D массива: " + ArrayUtils.sum2DArray(diag));
 
         System.out.println("\n10. Максимум и координаты:");
-        System.out.println(ArrayUtils.findMaxWithCoordinates(diag));
+        int[][] myMatrix = {
+                {5, 3, 9},
+                {4, 9, 1},
+                {9, 2, 0}
+        };
+        System.out.println(ArrayUtils.findAllMaxCoordinates(myMatrix));
 
         System.out.println("\n11. Квадратный ли массив: " + ArrayUtils.isSquareMatrix(diag));
 
         System.out.println("\n12. Анализ 2D массива:");
         ArrayUtils.analyze2DArray(diag);
 
-        System.out.println("\n13. Четные = 0, нечетные = 1 (4x4):");
-        int[][] pattern = ArrayUtils.fillEvenOddPattern(4, 4);
+        System.out.println("\n13. Четные = 0, нечетные = 1 (6x6):");
+        int[][] pattern = ArrayUtils.fillEvenOddPattern(6, 6);
         printMatrix(pattern);
     }
 

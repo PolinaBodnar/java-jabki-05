@@ -15,15 +15,15 @@ public class ArrayUtils {
     public static int sumArray(int[] arr) {
         if (arr == null) throw new IllegalArgumentException("Массив не может быть null");
         int sum = 0;
-        for (int num : arr) sum += num;
-        return sum;
+        {for (int num : arr) sum += num;
+        return sum;}
     }
 
     // 3. Минимальный элемент
     public static int findMin(int[] arr) {
         if (arr == null || arr.length == 0) throw new IllegalArgumentException("Массив пуст или null");
         int min = arr[0];
-        for (int num : arr) if (num < min) min = num;
+        {for (int num : arr) if (num < min) min = num;}
         return min;
     }
 
@@ -86,19 +86,28 @@ public class ArrayUtils {
     }
 
     // 10. Максимум и его координаты
-    public static String findMaxWithCoordinates(int[][] matrix) {
+    public static String findAllMaxCoordinates(int[][] matrix) {
+        if (matrix == null || matrix.length == 0 || matrix[0].length == 0) {
+            throw new IllegalArgumentException("Матрица не должна быть пустой или null");
+        }
+
         int max = matrix[0][0];
-        int row = 0, col = 0;
+        for (int[] row : matrix) {
+            for (int val : row) {
+                if (val > max) max = val;
+            }
+        }
+
+        List<String> coords = new ArrayList<>();
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix[i].length; j++) {
-                if (matrix[i][j] > max) {
-                    max = matrix[i][j];
-                    row = i;
-                    col = j;
+                if (matrix[i][j] == max) {
+                    coords.add(String.format("(%d, %d)", i, j));
                 }
             }
         }
-        return String.format("Максимум: %d на позиции (%d, %d)", max, row, col);
+
+        return String.format("Максимум: %d на позициях: %s", max, String.join(", ", coords));
     }
 
     // 11. Проверка на квадратность
@@ -113,7 +122,8 @@ public class ArrayUtils {
 
     // 12. Сумма по строкам, мин и макс
     public static void analyze2DArray(int[][] matrix) {
-        int globalMin = matrix[0][0], globalMax = matrix[0][0];
+        int globalMax = matrix[0][0],
+        globalMin = matrix[0][0];
         for (int i = 0; i < matrix.length; i++) {
             int rowSum = 0;
             for (int val : matrix[i]) {
@@ -137,4 +147,6 @@ public class ArrayUtils {
         }
         return matrix;
     }
+
+
 }
