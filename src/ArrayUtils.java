@@ -15,8 +15,8 @@ public class ArrayUtils {
     public static int sumArray(int[] arr) {
         if (arr == null) throw new IllegalArgumentException("Массив не может быть null");
         int sum = 0;
-        {for (int num : arr) sum += num;
-        return sum;}
+        for (int num : arr) sum += num;
+        return sum;
     }
 
     // 3. Минимальный элемент
