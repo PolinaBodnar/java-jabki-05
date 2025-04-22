@@ -1,5 +1,4 @@
 import java.util.*;
-
 public class ArrayUtils {
 
     // 1. Печать массива
