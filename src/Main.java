@@ -34,17 +34,7 @@ public class Main {
                 {4, 9, 1},
                 {9, 2, 0}
         };
-        System.out.println(ArrayUtils.findAllMaxCoordinates(myMatrix));
 
-        System.out.println("\n11. Квадратный ли массив: " + ArrayUtils.isSquareMatrix(diag));
-
-        System.out.println("\n12. Анализ 2D массива:");
-        ArrayUtils.analyze2DArray(diag);
-
-        System.out.println("\n13. Четные = 0, нечетные = 1 (6x6):");
-        int[][] pattern = ArrayUtils.fillEvenOddPattern(6, 6);
-        printMatrix(pattern);
-    }
 
     public static void printMatrix(int[][] matrix) {
         for (int[] row : matrix) {
